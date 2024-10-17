@@ -20,6 +20,8 @@
 git clone git@github.com:Jonathanlight/app_yellow_consulting.git
 $ cd app_yellow_consulting
 
+application summary please elaborate on how plan to use our API
+
 # Utilisation de Symfony CLI
 symfony new --webapp symfony --version=6.4.*
 
