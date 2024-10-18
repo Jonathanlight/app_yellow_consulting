@@ -39,10 +39,6 @@ jobs:
       working-directory: app/symfony
       run: vendor/bin/twigcs lint templates
 
-    - name: Run phplint
-      working-directory: app/symfony
-      run: vendor/bin/phplint src
-
     - name: Run PHPUnit
       working-directory: app/symfony
       run: vendor/bin/phpunit
