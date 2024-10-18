@@ -1,5 +1,6 @@
 grumphp:
     stop_on_failure: true
+    hooks_dir: "app/symfony/vendor/bin"
     tasks:
         git_branch_name:
             additional_modifiers: ''
