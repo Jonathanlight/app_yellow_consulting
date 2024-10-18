@@ -9,10 +9,8 @@ use App\Enum\CallApiEnum;
 class SearchMovieService extends BaseTmdbService
 {
     /**
-     * @param string $query
-     * @param int $page
-     * @param string $language
      * @return array<string, mixed>
+     *
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface

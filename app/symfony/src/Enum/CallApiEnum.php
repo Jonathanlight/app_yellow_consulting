@@ -7,6 +7,7 @@ namespace App\Enum;
 enum CallApiEnum: string
 {
     case SEARCH_MOVIE = 'https://api.themoviedb.org/3/search/movie';
+    case SEARCH_LINK_MOVIE = 'https://api.themoviedb.org/3/movie';
     case SEARCH_TV = 'https://api.themoviedb.org/3/search/tv';
     case SEARCH_PERSON = 'https://api.themoviedb.org/3/search/person';
     case SEARCH_COLLECTION = 'https://api.themoviedb.org/3/search/collection';

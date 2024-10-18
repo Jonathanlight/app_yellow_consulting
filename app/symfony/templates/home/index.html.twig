@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% import 'component/macro/star_rating.html.twig' as macros %}
+{% import 'component/macro/dialog.html.twig' as dialogMacros %}
+
+{% block title %}We Movies{% endblock %}
 
 {% block body %}
     <nav>
@@ -10,27 +13,37 @@
             </li>
         </ul>
         <ul>
-            <li><input type="text" id="dark" name="search" placeholder="search"></li>
+            <li class="grid">
+                <input type="text" class="col" id="dark" name="search" placeholder="search">
+                <input type="button" class="col" value="Ok"/>
+            </li>
         </ul>
     </nav>
 
     <div class="container">
-        {% for i in 0..10 %}
+        {% for movie in movies %}
             <div class="grid">
                 <div class="col-4">
-                    <img src="https://m.media-amazon.com/images/I/71XlZvKMwoL._AC_UF1000,1000_QL80_.jpg" width="250" alt="Movie Poster" class="img-responsive">
+                    <img src="{{ path_image_tmdb ~ movie.poster_path }}" width="250" alt="{{ movie.title }}" class="img-responsive">
                 </div>
 
                 <div class="col-8">
-                    <h3>Movie Title</h3>
-                    <div class="rating">
-                        <span>⭐⭐⭐⭐☆</span>
-                    </div>
-                    <p><strong>Release Date:</strong> 15 October 2024</p>
+                    <h3>{{ movie.title }}</h3>
+                    {{ macros.star_rating(movie.vote_average // 2) }}
+                    <p><strong>Release Date: </strong>{{ movie.release_date|date('d/m/Y') }} - Vôte {{ movie.vote_count }}</p>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec magna vel libero fermentum volutpat at sed justo.
+                        {{ movie.overview }}
                     </p>
-                    <a href="#" class="button">Lire détails</a>
+
+                    {% set videoUrl = getLinkToVideo(movie.id) %}
+
+                    {% if videoUrl %}
+                        {{ dialogMacros.dialog(movie.id, getLinkToVideo(movie.id)) }}
+                    {% endif %}
+
+                    <details>
+                        <p>{{ movie.overview }}</p>
+                    </details>
                 </div>
             </div>
             <hr>
