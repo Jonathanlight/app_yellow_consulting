@@ -27,13 +27,13 @@ jobs:
       working-directory: app/symfony
       run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
-    - name: Run PHPUnit
+    - name: Run PHPSpec
       working-directory: app/symfony
-      run: vendor/bin/phpunit
+      run: vendor/bin/phpspec run
 
-    - name: Run PHPcsfixer
+    - name: Run PHPStan
       working-directory: app/symfony
-      run: vendor/bin/php-cs-fixer fix --dry-run --verbose --config=.php_cs.dist
+      run: vendor/bin/phpstan analyse src --level=7
 
     - name: Run twigcs
       working-directory: app/symfony
@@ -42,4 +42,10 @@ jobs:
     - name: Run phplint
       working-directory: app/symfony
       run: vendor/bin/phplint src
+
+    - name: Run PHPUnit
+      working-directory: app/symfony
+      run: vendor/bin/phpunit
+
+
 
