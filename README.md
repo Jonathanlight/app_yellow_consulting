@@ -33,6 +33,7 @@ $ make docker-run
 
 # or start docker containers in background
 $ vendor/bin/php-cs-fixer' '--config=.php-cs-fixer.dist.php' '--verbose' 'fix'
+$ vendor/bin/phpstan analyse src --level=7
 
 # install dependencies
 $ make docker-exec apache bash

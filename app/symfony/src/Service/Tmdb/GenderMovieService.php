@@ -9,6 +9,8 @@ use App\Enum\CallApiEnum;
 class GenderMovieService extends BaseTmdbService
 {
     /**
+     * @param string $language
+     * @return array<string, mixed>
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
