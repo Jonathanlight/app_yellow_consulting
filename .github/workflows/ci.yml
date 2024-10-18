@@ -27,10 +27,9 @@ jobs:
       working-directory: app/symfony
       run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
-    # PHPStan step
     - name: Run PHPStan
       working-directory: app/symfony
-      run: vendor/bin/phpstan analyse -c phpstan.neon
+      run: vendor/bin/phpstan --memory-limit=-1 analyse -c phpstan.neon
 
     - name: Run GrumPHP
       working-directory: app/symfony
