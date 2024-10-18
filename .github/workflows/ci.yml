@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  grumphp:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring, intl
+        ini-values: post_max_size=256M, upload_max_filesize=256M
+
+    - name: Install Composer dependencies
+      working-directory: app/symfony
+      run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
+
+    - name: Run PHPSpec
+      working-directory: app/symfony
+      run: vendor/bin/phpspec run
+
+    - name: Run PHPStan
+      working-directory: app/symfony
+      run: vendor/bin/phpstan analyse src --level=7
+
+    - name: Run PHPUnit
+      working-directory: app/symfony
+      run: vendor/bin/phpunit
+
+
+
