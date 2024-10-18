@@ -14,7 +14,6 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libffi-dev \
     ca-certificates \
-    intl \
     nano
 
 # Apache SSL

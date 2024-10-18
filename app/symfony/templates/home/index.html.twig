@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+    <nav>
+        <ul>
+            <li>
+                <u><h1>A propos de We Movies</h1></u>
+            </li>
+        </ul>
+        <ul>
+            <li><input type="text" id="dark" name="search" placeholder="search"></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        {% for i in 0..10 %}
+            <div class="grid">
+                <div class="col-4">
+                    <img src="https://m.media-amazon.com/images/I/71XlZvKMwoL._AC_UF1000,1000_QL80_.jpg" width="250" alt="Movie Poster" class="img-responsive">
+                </div>
+
+                <div class="col-8">
+                    <h3>Movie Title</h3>
+                    <div class="rating">
+                        <span>⭐⭐⭐⭐☆</span>
+                    </div>
+                    <p><strong>Release Date:</strong> 15 October 2024</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean nec magna vel libero fermentum volutpat at sed justo.
+                    </p>
+                    <a href="#" class="button">Lire détails</a>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -40,7 +40,21 @@ services:
     networks:
       - symfony
 
-  phpmyadmin:
+  phpstan:
+    build:
+      context: .
+    volumes:
+      - ./app/symfony:/var/www/html
+    command: ./vendor/bin/phpstan analyse
+
+ phpcsfixer:
+   build:
+     context: .
+   volumes:
+     - ./app/symfony:/var/www/html
+   command: ./vendor/bin/php-cs-fixer fix --dry-run --diff
+
+ phpmyadmin:
     container_name: yellow_consulting_phpmyadmin
     ports:
       - '8001:80'
@@ -50,7 +64,7 @@ services:
     depends_on:
       - mysql
 
-  mailpit:
+ mailpit:
     image: axllent/mailpit
     container_name: yellow_consulting_mailpit
     ports:
