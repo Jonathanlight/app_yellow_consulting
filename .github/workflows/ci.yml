@@ -24,7 +24,9 @@ jobs:
         ini-values: post_max_size=256M, upload_max_filesize=256M
 
     - name: Install Composer dependencies
+      working-directory: app/symfony
       run: composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
     - name: Run GrumPHP
+      working-directory: app/symfony
       run: vendor/bin/grumphp run
