@@ -33,10 +33,10 @@ class VideoMovieServiceTest extends BaseTmdbServiceTest
         $this->httpClient
             ->method('request')
             ->with('GET', $this->callback(function ($url) {
-                return strpos($url, '/19995/videos') !== false;
+                return false !== strpos($url, '/19995/videos');
             }), $this->callback(function ($options) {
                 return isset($options['query']['api_key']) && $options['query']['api_key'] === $this->getTmdbApiKey()
-                    && $options['query']['language'] === 'fr';
+                    && 'fr' === $options['query']['language'];
             }))
             ->willReturn($mockResponse);
 
@@ -45,7 +45,7 @@ class VideoMovieServiceTest extends BaseTmdbServiceTest
         $this->assertEquals([
             'results' => [
                 ['key' => 'MJ3Up7By5cw', 'site' => 'YouTube', 'type' => 'Trailer'],
-            ]
+            ],
         ], $result);
     }
 
@@ -64,10 +64,10 @@ class VideoMovieServiceTest extends BaseTmdbServiceTest
         $this->httpClient
             ->method('request')
             ->with('GET', $this->callback(function ($url) {
-                return strpos($url, '/19995/videos') !== false;
+                return false !== strpos($url, '/19995/videos');
             }), $this->callback(function ($options) {
                 return isset($options['query']['api_key']) && $options['query']['api_key'] === $this->getTmdbApiKey()
-                    && $options['query']['language'] === 'fr';
+                    && 'fr' === $options['query']['language'];
             }))
             ->willReturn($mockResponse);
 
@@ -76,7 +76,7 @@ class VideoMovieServiceTest extends BaseTmdbServiceTest
         $this->assertEquals([
             'results' => [
                 ['key' => 'MJ3Up7By5cw', 'site' => 'YouTube', 'type' => 'Trailer'],
-            ]
+            ],
         ], $result);
     }
 }

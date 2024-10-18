@@ -37,9 +37,9 @@ class SearchMovieServiceTest extends BaseTmdbServiceTest
             ->method('request')
             ->with('GET', $this->anything(), $this->callback(function ($options) {
                 return isset($options['query']['api_key']) && $options['query']['api_key'] === $this->getTmdbApiKey()
-                    && $options['query']['query'] === 'batman'
-                    && $options['query']['page'] === 1
-                    && $options['query']['language'] === 'fr';
+                    && 'batman' === $options['query']['query']
+                    && 1 === $options['query']['page']
+                    && 'fr' === $options['query']['language'];
             }))
             ->willReturn($mockResponse);
 
@@ -73,8 +73,8 @@ class SearchMovieServiceTest extends BaseTmdbServiceTest
         $this->httpClient
             ->method('request')
             ->with('GET', $this->anything(), $this->callback(function ($options) {
-                return isset($options['query']['page']) && $options['query']['page'] === 1
-                    && $options['query']['language'] === 'fr';
+                return isset($options['query']['page']) && 1 === $options['query']['page']
+                    && 'fr' === $options['query']['language'];
             }))
             ->willReturn($mockResponse);
 

@@ -31,6 +31,9 @@ $ make docker-build
 # or start docker containers
 $ make docker-run
 
+# or start docker containers in background
+$ vendor/bin/php-cs-fixer' '--config=.php-cs-fixer.dist.php' '--verbose' 'fix'
+
 # install dependencies
 $ make docker-exec apache bash
 $ composer install

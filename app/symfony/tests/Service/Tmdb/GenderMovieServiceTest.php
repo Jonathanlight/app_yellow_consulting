@@ -26,8 +26,8 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
             ->method('toArray')
             ->willReturn([
                 'genres' => [
-                    ['id' => 28, 'name' => 'Action']
-                ]
+                    ['id' => 28, 'name' => 'Action'],
+                ],
             ]);
 
         $this->httpClient
@@ -41,8 +41,8 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
 
         $this->assertEquals([
             'genres' => [
-                ['id' => 28, 'name' => 'Action']
-            ]
+                ['id' => 28, 'name' => 'Action'],
+            ],
         ], $result);
     }
 
@@ -53,14 +53,14 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
             ->method('toArray')
             ->willReturn([
                 'genres' => [
-                    ['id' => 28, 'name' => 'Action']
-                ]
+                    ['id' => 28, 'name' => 'Action'],
+                ],
             ]);
 
         $this->httpClient
             ->method('request')
             ->with('GET', $this->anything(), $this->callback(function ($options) {
-                return isset($options['query']['language']) && $options['query']['language'] === 'fr';
+                return isset($options['query']['language']) && 'fr' === $options['query']['language'];
             }))
             ->willReturn($mockResponse);
 
@@ -68,8 +68,8 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
 
         $this->assertEquals([
             'genres' => [
-                ['id' => 28, 'name' => 'Action']
-            ]
+                ['id' => 28, 'name' => 'Action'],
+            ],
         ], $result);
     }
 }
