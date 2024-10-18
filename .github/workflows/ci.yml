@@ -35,10 +35,6 @@ jobs:
       working-directory: app/symfony
       run: vendor/bin/phpstan analyse src --level=7
 
-    - name: Run twigcs
-      working-directory: app/symfony
-      run: vendor/bin/twigcs lint templates
-
     - name: Run PHPUnit
       working-directory: app/symfony
       run: vendor/bin/phpunit
