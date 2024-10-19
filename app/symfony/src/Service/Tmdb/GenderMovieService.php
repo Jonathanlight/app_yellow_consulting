@@ -9,6 +9,8 @@ use App\Enum\CallApiEnum;
 class GenderMovieService extends BaseTmdbService
 {
     /**
+     * @param array<int, string> $withGenres
+     *
      * @return array<string, mixed>
      *
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
@@ -17,12 +19,15 @@ class GenderMovieService extends BaseTmdbService
      * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
      * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
-    public function getGenderMovie(string $language = 'fr'): array
+    public function getGenderMovie(array $withGenres, string $language = 'fr'): array
     {
         $response = $this->client->request('GET', CallApiEnum::SEARCH_DISCOVER->value, [
             'query' => [
                 'api_key' => $this->tmdbApiKey,
                 'language' => $language,
+                'sort_by' => 'title.asc',
+                'include_video' => true,
+                'with_genres' => implode(',', $withGenres),
             ],
         ]);
 
