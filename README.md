@@ -1,5 +1,5 @@
 # yellow_consulting
-- yellow_consulting
+![image description](app/symfony/public/assets/images/capture.png)
 
 ### Requirements
 ---
@@ -31,7 +31,8 @@ $ make docker-build
 # or start docker containers
 $ make docker-run
 
-# or start docker containers in background
+# run tests and code quality checks
+$ make docker-exec
 $ vendor/bin/php-cs-fixer --config=.php-cs-fixer.php --verbose fix
 $ vendor/bin/phpstan analyse src --level=7
 $ vendor/bin/phpunit

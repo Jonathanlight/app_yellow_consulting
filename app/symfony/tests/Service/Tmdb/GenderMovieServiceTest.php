@@ -37,7 +37,7 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
             }))
             ->willReturn($mockResponse);
 
-        $result = $this->genderMovieService->getGenderMovie('fr');
+        $result = $this->genderMovieService->getGenderMovie([28], 'fr');
 
         $this->assertEquals([
             'genres' => [
@@ -46,6 +46,13 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
         ], $result);
     }
 
+    /**
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     */
     public function testGetGenderMovieUsesDefaultLanguage(): void
     {
         $mockResponse = $this->createMock(ResponseInterface::class);
@@ -64,7 +71,7 @@ class GenderMovieServiceTest extends BaseTmdbServiceTest
             }))
             ->willReturn($mockResponse);
 
-        $result = $this->genderMovieService->getGenderMovie();
+        $result = $this->genderMovieService->getGenderMovie([28], 'fr');
 
         $this->assertEquals([
             'genres' => [
